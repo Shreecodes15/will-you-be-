@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Tangerine";
+            background: linear-gradient(#FCE8EC, #F7BFC9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            background:#F7EEF2;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 350px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff4d6d;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .yes-button {
+            background-color: #950F37;
+            color: white;
+        }
+
+        .no-button {
+            background-color: #EDCAD5;
+        }
+
+        img {
+            width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container" id="box">
+    <h1 id="question">Will you be my Valentine? 💖</h1>
+
+    <div class="buttons">
+        <button class="yes-button" onclick="handleYesClick()">Yes babe 🫶🏻</button>
+        <button class="no-button" onclick="handleNoClick()">No, but ily 💗</button>
+    </div>
+
+    <img id="gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5lenZyZHI5OXM2eW95b3pmMG40cWVrMDhtNjVuM3A4dGNxa2g2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/VM1fcpu2bKs1e2Kdbj/giphy.gif">
+</div>
+
+<!-- AUDIO -->
+<audio id="song">
+    <source src="ILLIT01.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const messages = [
+        "Are you sure?",
+        "Really sure???",
+        "Pookie please 🥺",
+        "Think again 👉🏻👈🏻",
+        "I will be sad 😢",
+        "Very very sad 🥺",
+        "Okay last chance 😏",
+        "Say yes please ❤️"
+    ];
+
+    let index = 0;
+
+    function handleNoClick() {
+        const noBtn = document.querySelector(".no-button");
+        const yesBtn = document.querySelector(".yes-button");
+
+        noBtn.textContent = messages[index];
+        index = (index + 1) % messages.length;
+
+        let size = parseFloat(window.getComputedStyle(yesBtn).fontSize);
+        yesBtn.style.fontSize = (size + 6) + "px";
+    }
+
+    function handleYesClick() {
+        const song = document.getElementById("song");
+        song.play(); // ✅ works because user clicked
+
+        document.getElementById("box").innerHTML = `
+            <h1>Knew you would say YES 💖</h1>
+            <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmo3c3l5ODh3ZGN6NHhhaDE2Mjg1ZjkwOXczdDFxbWM3dTBtaW9zaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9XY4f3FgFTT4QlaYqa/giphy.gif">
+            <p>Happy Valentine’s Day 🫶🏻</p>
+        `;
+    }
+</script>
+
+</body>
+</html>
